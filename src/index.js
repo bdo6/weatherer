@@ -1,10 +1,21 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import context, {initialState} from './context'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+function Wrap(){
+    const [state, set] = useState(initialState)
+    return <context.Provider value={{
+        state,
+        setState: (s)=> set({...state, ...s})
+    }}>
+        <App />
+    </context.Provider>
+}
+
+ReactDOM.render(<Wrap />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
