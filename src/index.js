@@ -8,8 +8,8 @@ import context, {initialState} from './context'
 function Wrap(){
     const [state, set] = useState(initialState)
     return <context.Provider value={{
-        state,
-        setState: (s)=> set({...state, ...s})
+        state, // combine "current" with new "state"
+        setState: s=> set(c=> ({...c, ...s}))
     }}>
         <App />
     </context.Provider>
