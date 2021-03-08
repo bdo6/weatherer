@@ -1,6 +1,4 @@
 
-
-
 import React from 'react'
 
 const context = React.createContext()
@@ -12,4 +10,5 @@ export const initialState = {
     loading:false,
     error:'',
     text:'Portland',
+    page:'forecast'
 }
